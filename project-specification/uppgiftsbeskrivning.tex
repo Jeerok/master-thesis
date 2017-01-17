@@ -1,0 +1,132 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\chead{Uppgiftsbeskrivning Exjobb}
+\cfoot{Joel Gärtner}
+\begin{document}
+\section*{1. Exjobbarens namn och E-post address}
+\begin{minipage}[t]{7cm}
+    {\textbf{Namn:}}\\
+Joel Gärtner
+
+\end{minipage}
+\begin{minipage}[t]{7cm}
+    {\textbf{E-post address:}}\\
+jgartner@kth.se
+\end{minipage}
+\section*{2. Preliminär titel}
+Ökad säkerhet genom slumptestning
+\section*{3. Bakgrund/Förutsättning}
+Slump (i form av slumpade databitar) är fundamentala byggstenar i all 
+kryptografi; alla chiffer och hash-algoritmer måste använda slumpade 
+databitar för att kunna ge någon sorts säkerhet. Moderna applikationer 
+använder således också en stor andel slumpdata till sessionsidentifierare,
+nonce och liknande. \\
+\\
+Att generera slumpdata är dock långt ifrån trivialt och det är lätt hänt
+att det är går att hitta mönster i slumpdatan. Om det går att förutspå 
+slumpdatan så försvinner dock av säkerheten man hoppats få genom dem.
+Det finns därmed ett säkerhetsintresse att 
+kunna förkasta slumpdata som dålig ifall det finns framträdande mönster i det.\\
+\\
+Tidigare har man utvecklat en mindre kollektion testsviter som testar 
+slumpad data (ENT, DieHard, GNU). Dessa verktyg ger en uppskattning av 
+entropin på data.  Detta ger en uppskattning av hur pass mycket ren 
+slumpdata man faktiskt kan få ut från datakällorna.
+Verktygen är dock långt ifrån kompletta och således finns det ett behov av att
+kunna erbjuda utvecklare ett ramverk med slumpdata testning som är ”bra nog” 
+att avgöra ett datas slumpegenskaper. \\
+\\
+Den praktiska delen av arbetet ska utföras på företaget Omegapoint.
+
+\section*{4. Vetenskaplig fråga}
+Det finns idag flera metoder som kan upptäcka fenomen i data som inte borde 
+finnas i äkta slumpdata. Dessa metoder kan användas för att förkasta en del
+data som vid första anblick ser slumpmässigt ut, men som vid djupare granskning
+visar sig inte bete sig slumpmässigt. Många av dessa metoder är idag 
+implementerade i verktyg som ger utvecklare möjligheten att testa sitt 
+data och kan visa på potentiella sårbarheter relaterat till dåligt genererad 
+slump. 
+Nya metoder har dock på senare tid kommit fram för att uppskatta entropin genom
+prediktorer. Dessa har lyckats ge en lägre uppskattning på entropin på 
+slumpdata som traditionella tester har överskattat entropin på. 
+Vidare studier av dessa prediktorer är därmed intressanta.
+Frågan är då vad för typ av prediktorer som hittills har implementerats
+och hur dom står sig mot traditionella tester i olika sammanhang. 
+Frågan är även om det finns fler typer av sådana prediktorer som skulle
+kunna implementeras för att ge ännu bättre uppskattning av entropin på olika
+typer av slumpkällor. 
+\subsection*{Forskningsområde}
+Kryptologi, datalogi
+\subsection*{Koppling till Forskning / Utveckling}
+Vikten av att mata kryptografiska protokoll eller motsvarande med tillräckligt 
+bra slumpdata är varken trivialt eller något som praktiseras i större
+utsträckning inom systemutveckling idag. Ett systems säkerhet vilar på att 
+underliggande kryptografiska funktioner är intakta, viket de potentiellt inte 
+är om dålig slump genereras, således behövs det (enkla) metoder att kontrollera 
+detta i syfte att dels ge utvecklare ett verktyg som kan eliminera en del
+sårbarheter. Användandet av ett sådant verktyg kan även leda till att 
+utvecklare blir mer medvetna om denna typ av sårbarheter vilket förhoppningsvis
+leder till att dessa i större grad kan förhindras. Aktuell forskning 
+tittar på problemet i viss utsträckning men kanske inte tillfredsställande 
+mycket i relation till hur det skall användas och tillämpas i praktiken 
+(med moderna system). Om nya bättre metoder kan utvecklas kan detta även
+ligga till grunden för vidare standardisering av entropi och 
+slumpdatatestning såsom gjorts av NIST.  Intresset för frågeställningen 
+ligger inom domänen 
+för all systemutveckling och systemarkitektur som har krav på säkerhet.
+\subsection*{Undersökningsmetod}
+Litteraturstudie av vilka teoretiska tester/testmodeller som finns implementerade
+idag (och hur) och vilka som inte finns implementerade. Undersökningen består i
+att göra ett enkelt proof-of-concept av ett testverktyg med sammanställning av 
+väl valda teoretiska tester som bedöms lämpliga och genom att analysera resultaten
+efter körning av verktyget se vilken typ av information som potentiellt skulle
+kunna ges för att öka säkerheten/identifiera sårbarheter.
+\subsection*{Hypotes}
+\begin{itemize}
+\item Funna metoder (kombination av metoder) ger signifikanta 
+    indikationer på att ett system genererar dålig slumpdata.
+\item Funna metoder är minst lika bra, men kanske bättre än 
+redan befintliga kombinationer av metoder, vilket oavsett 
+kompletterar området ''testning av kryptografiskt säker slumpdata''. 
+\item Funna metoder implementerade som ett verktyg som är lätt att 
+    använda leder till att systemutvecklare kan börja använda det
+    och således minska risken att dålig slumpdata används.
+\end{itemize}
+\subsection*{Utvärdering}
+\begin{itemize}
+    \item Provköra verktyget och jämföra med andra befintliga tester, 
+    \item Provköra verktyget skarpt och låta systemutvecklare bedöma graden
+        av ökad säkerhet som en direkt implikation av ett enkelt,
+        användarvänligt men teoretiskt starkt verktyg.
+\end{itemize}
+
+\section*{5. Exjobbarens bakgrund}
+
+Kommer från Teknisk Fysik med mycket matematik vilket kan komma till användning.
+Fortsatt med masterinriktning datalogi vilket med spår inom datasäkerhet vilket
+lämpar sig väl för exjobbet.  Har även som del av utbildningen läst kurs inom
+kryptologi vilket ligger till fokus för exjobbet.
+
+\section*{6. Handledare på företaget}
+Hannes Salin, säkerhetskonsult, handledare från företagets sida.
+\section*{7. Avgränsning/Resurser}
+Påbörjad undersökning och litteraturstudie finns, identifierade användningsområden finns att pröva detta på
+\section*{8. Behörighet och Studieplanering}
+
+\subsection*{Behörighet}
+Har läst mer än tillräckligt kurser under tre första åren på teknisk fysik
+och har fått alla, inklusive kandidat examensarbetet godkända. Har även
+läst gott om Master-nivå kurser och det är mer än 60 hp på avancerad nivå
+som är helt avklarade. Klar med alla obligatoriska kurser förutom 
+programsammanhållande kursen. Även klar med vetenskapsteori kursen DA2210.
+\subsection*{Studieplanering}
+De ända kurser som återstår för examen är programsammanhållande kursen,
+examensarbetet samt någon kurs inom spåret datasäkerhet på åtminstone 3hp. 
+Kursen inom spåret läser jag för tillfället och bör vara klar med till jul
+och examensarbete och programsammanhållande kursen bör båda vara klara
+i slutet av period 4. 
+
+\end{document}
