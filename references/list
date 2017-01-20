@@ -9,3 +9,12 @@ Uppsättning av olika tester
 Handbook of applied crypography
 (Bok i PDF form)
 Mer övergripande om slumptal och hur de genereras och testas i praktiken
+
+TestU01: A C Library for Empirical Testing of
+Random Number Generators
+(http://delivery.acm.org.focus.lib.kth.se/10.1145/1270000/1268777/a22-lecuyer.pdf?ip=130.237.29.138&id=1268777&acc=ACTIVE%20SERVICE&key=74F7687761D7AE37%2EE53E9A92DC589BF3%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&CFID=890660878&CFTOKEN=18687223&__acm__=1484831407_604735779b456ad0cff0a0cae9d87034)
+Information om TestU01 som kan användas som referens till nuvarande testning av slumptal
+
+Predictive Models for Min-entropy Estimation
+(http://download.springer.com.focus.lib.kth.se/static/pdf/926/chp%253A10.1007%252F978-3-662-48324-4_19.pdf?originUrl=http%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%2F978-3-662-48324-4_19&token2=exp=1484910303~acl=%2Fstatic%2Fpdf%2F926%2Fchp%25253A10.1007%25252F978-3-662-48324-4_19.pdf%3ForiginUrl%3Dhttp%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%252F978-3-662-48324-4_19*~hmac=c8724945d9436ac13a3e11ccaa2c1d00fb9640d81fa630747b5cb6abd264d80d)
+Papper som beskriver användingen av prediktorer för att ge uppskattning av entropin.   
