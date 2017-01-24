@@ -108,6 +108,45 @@ a lot more entropy sources which better models more types of data sources.
 \section*{Research Questions and Method}
 \section*{Evaluation and News Value}
 \section*{Pilot Study}
+Some study of the implementations of pseudo random number generators and
+cryptographically secure pseudo random number generators to get a better
+understanding of the context. Furthermore study of the Yarrow and
+Fortuna algorithms and their implementations may be of interest as these 
+use entropy accumulators as integral parts of their algorithm to secure the 
+algorithm even in cases where part of the state becomes known to an attacker.
+\\
+
+\noindent
+There has also been guidelines produced by NIST related to random number
+generators and entropy sources. These documents NIST SP 800-90X where 
+X is A, B and C are guidelines related to how secure random generators 
+should perform and how sources of entropy sources should behave and how
+they can be tested. Furthermore researchers at NIST have also produced 
+the paper \textit{Predictive Models for Min-entropy Estimation} related to 
+using predictors to producing better estimates for entropy.
+Other sources related to how entropy and randomness testing is performed is
+also of interest, including for example how suites such as TestU01 evaluates
+data.
+\\
+
+\noindent
+Furthermore it will need to be investigated what sources of entropy exist today
+and how they work. This includes built in entropy generators in operating 
+systems but also specific generators built for that specific purpose. Sites
+such as \textit{random.org} which provide a service which provide random 
+data as a service will also be of interest.
+
+\\
+\noindent
+It may also be useful to study the different cryptographic protocols 
+where randomness is useful in order to see what kind of impact too low entropy 
+may have in relation to security. In combination with this it will also be 
+of interest to investigate the weaknesses which have been discovered that were 
+the result of lacking entropy when generating random numbers for cryptographic 
+protocols.
+
+
+
 
 \section*{Conditions and Schedule}
 \end{document}
