@@ -53,3 +53,8 @@ Möjligtvis av intresse för att kunna känna igen dåliga slumptalsgeneratorer.
 Pratar om sårbarheter i /dev/random på linux baserade maskiner
 relaterat till att det är dåliga uppskattningar av entropi 
 och att entropi inte ackumeleras som det borde.
+
+Recommendation for the Entropy 
+Sources Used for Random Bit Generation
+(http://csrc.nist.gov/publications/drafts/800-90/draft-sp800-90b.pdf)
+Den källa som Predictive Models for Min-entropy Estimation jämför sig mot
