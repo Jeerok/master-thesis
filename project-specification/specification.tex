@@ -1,0 +1,113 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[swedish]{babel}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+\pagestyle{fancy}
+\lhead{Joel Gärtner}
+\chead{\large\textbf{Project specification}}
+\rhead{jgartner@kth.se}
+\begin{document}
+\section*{Formalities}
+\begin{center}
+\textbf{Preliminary Title:}\\ Improved Security Through Randomness Testing
+\end{center}
+
+\begin{minipage}[t]{7cm}
+\textbf{Name:}\\ Joel Gärtner\\
+\textbf{Email:}\\ jgartner@kth.se\\
+\textbf{Date:}\\ \today
+\end{minipage}
+\begin{minipage}[t]{7cm}
+\textbf{CSC Supervisor:}\\ Douglas Wikström \\
+\textbf{Principal:}\\
+Omegapoint \\
+\textbf{Principal Supervisor:}\\
+ Hannes Salin\\
+\end{minipage}
+\section*{Background and Objective}
+Several cryptographic protocols require some input to be unpredictable 
+in order to function in a way which provides security. Furthermore the 
+keys which are in the protocols must also be generated in an unpredictable
+manner in order for them to be secure. In order to get a source of 
+unpredictability, random generators are used. These generators can potentially 
+be truly random and generate numbers based on some phenomenon which is deemed 
+unpredictable. The speed of these generators is however often limited and because
+of this it is more common that the generators are pseudo random 
+based upon deterministic algorithms which given an input, 
+a seed for the generator, produces an arbitrarily long sequence which 
+looks random. Depending on the application different types of pseudo 
+random generators. For simulations and similar the most important properties 
+is that it is fast to generate numbers and that they behave statistically
+in a way that seems random. For cryptographic purposes the generators 
+also have to be unpredictable in the meaning that an adversary who sees part
+of the generated sequence won't be able to efficiently guess the next bit 
+of the sequence with a probability significantly higher than if the sequence 
+was truly random. \\
+
+\noindent
+These cryptographically secure pseudo random generators are thus such that 
+they expand a seed into a sequence which can't be efficiently distinguished 
+from a truly random sequence without knowledge of the seed. If the seed is 
+known however, the whole sequence is easily reproducible as the algorithm 
+generating the sequence is deterministic. As such the that the pseudo random
+generator is cryptographically secure will not provide any security if the seed
+is predictable. There is thus a need for a process to unpredictably select a 
+seed which can then be expanded into arbitrarily much seemingly random data
+using a cryptographically secure pseudo random generator. In order to select
+this seed there is a requirement for a source of unpredictability. This can
+for example be an actual true random generator or another process on the 
+generating machine which behaves in an unpredictable manner. It is however not
+obvious how much data is needed from the source of unpredictability before 
+enough unpredictability has been gathered to the seed. A measure of this 
+unpredictability is the entropy of the sample received from the source.
+A sequence of bits from a source will have an entropy of $1$ per bit if
+it is completely random and an entropy of $0$ per bit if it is 
+completely predictable. It is easy to estimate the entropy of 
+data if the data consists of samples with $n$ bit where each such sample is
+generated completely independent from any of the other samples. If this is the 
+case then the unpredictability and thus the entropy only depends on the 
+probabilities of the samples $x$ and can be calculated by estimating the
+probabilities of the sample $x$ with the relative frequency of $x$. 
+In case the samples are not independent identically distributed then it is a 
+lot harder to estimate the entropy. \\
+
+\noindent
+Several test suites exists which try to determine when data does not behave 
+randomly. These suites can to some extent 
+identify sequences where the samples do not behave like identically distributed
+random variables. Most such tests do however only identify when there is 
+incorrect behaviour in the sequence and does not give an estimate of the actual
+unpredictability of the sequence. As the sequence can somehow be distinguished 
+from truly random data, it could be a potential weakness if used in 
+cryptographic applications by itself. The sequence does however probably still
+contain some amount of unpredictability and this could potentially be extracted
+by transforming the sequence so that it statistically behaves more like random
+data. This can be done with multiple sources of entropy which can be combined 
+in order to create a source of random data which behaves randomly and is 
+unpredictable. This source could then be used to get a seed for a
+cryptographically secure random generator which could expand this source of 
+unpredictable into as much random data as necessary.\\
+
+\noindent
+An estimate of the entropy of data is thus useful in order to determine
+how much data is necessary to get enough unpredictability for your random
+generators. A recent approach to estimating the entropy of data is to use 
+predictors. These estimators take the approach of trying to predict the data
+which is fed into them as good as possible. The entropy of the data can then
+be approximated via the success rate of the predictors. Several predictors were
+constructed in order to give good predictions and thus good estimations of the 
+entropy. All entropy estimations will however have the problem that they only
+estimate the entropy of some specific types of distributions of data while 
+other distributions will get wrong estimations. The constructed predictors were 
+meant to be general and work in general but more specific estimators will work
+better for most types of entropy sources. As such there is the possibility of
+a lot more entropy sources which better models more types of data sources.
+
+\section*{Research Questions and Method}
+\section*{Evaluation and News Value}
+\section*{Pilot Study}
+
+\section*{Conditions and Schedule}
+\end{document}
