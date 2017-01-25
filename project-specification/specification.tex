@@ -81,8 +81,8 @@ is a lot harder to estimate the entropy. \\
 
 \noindent
 Several test suites exists which try to determine when data does not behave 
-randomly\cite{Ecuyer2007}\cite{Bassham:2010:SRS:2206233}.
-These suites can to some extent 
+randomly\cite{Ecuyer2007}\cite{Bassham:2010:SRS:2206233}
+\cite{brown2017dieharder}. These suites can to some extent 
 identify sequences where the samples do not behave like identically distributed
 random variables. Most such tests do however only identify when there is 
 incorrect behaviour in the sequence and does not give an estimate of the actual
@@ -101,7 +101,8 @@ unpredictable into as much random data as necessary.\\
 An estimate of the entropy of data is thus useful in order to determine
 how much data is necessary to get enough unpredictability for your random
 generators. A recent approach to estimating the entropy of data is to use 
-predictors. These estimators take the approach of trying to predict the data
+predictors\cite{eprint-2015-26658}.
+These estimators take the approach of trying to predict the data
 which is fed into them as good as possible. The entropy of the data can then
 be approximated via the success rate of the predictors. Several predictors were
 constructed in order to give good predictions and thus good estimations of the 
@@ -117,13 +118,16 @@ A specific application where there is a need for an entropy estimator is for
 the random number generator /dev/random on Linux systems. Here data is 
 gathered in a pool and the amount of entropy in the data is estimated 
 and added to an estimate of the entropy in the pool\cite{/dev/random}.
-The random number 
-generator then only returns a number when it deems there to be enough entropy
-in the pool. Other random number generators which depend on outside entropy 
+The random number generator then only returns a number when it deems there 
+to be enough entropy in the pool.
+Other random number generators which depend on outside entropy 
 have similar systems which they have in order to avoid giving numbers to 
 the users of the generators when the numbers are deemed too predictable.
 The estimates of the available entropy is interesting to analyse as a 
-too high estimate of the entropy could be a security risk.
+too high estimate of the entropy could be a security risk. There have been 
+several examples of security vulnerabilities which were the result of a lack
+of entropy when generating random numbers\cite{goldberg1996randomness}
+\cite{yilek2009private}.
 \section*{Research Questions and Method}
 \subsection*{Question}
 Can new types of entropy estimators give better estimates than existing
@@ -211,8 +215,8 @@ data.
 Furthermore it will need to be investigated what sources of entropy exist today
 and how they work. This includes built in entropy generators in operating 
 systems but also specific generators built for that specific purpose. Sites
-such as \textit{random.org} which provide a service which provide random 
-data as a service will also be of interest.
+such as \textit{random.org}\cite{haahr2010random} which provide a service which 
+provide random data as a service will also be of interest.
 \\
 
 \noindent
