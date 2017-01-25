@@ -109,10 +109,28 @@ estimate the entropy of some specific types of distributions of data while
 other distributions will get wrong estimations. The constructed predictors were 
 meant to be general and work in general but more specific estimators will work
 better for most types of entropy sources. As such there is the possibility of
-a lot more entropy sources which better models more types of data sources.
+a lot more entropy sources which better models more types of data sources. \\
 
+\noindent
+A specific application where there is a need for an entropy estimator is for
+the random number generator /dev/random on Linux systems. Here data is 
+gathered in a pool and the amount of entropy in the data is estimated 
+and added to an estimate of the entropy in the pool\cite{/dev/random}. The random number 
+generator then only returns a number when it deems there to be enough entropy
+in the pool. Other random number generators which depend on outside entropy 
+have similar systems which they have in order to avoid giving numbers to 
+the users of the generators when the numbers are deemed too predictable.
+The estimates of the available entropy is interesting to analyse as a 
+too high estimate of the entropy could be a security risk.
 \section*{Research Questions and Method}
+\subsection*{Question}
+\subsection*{Problem Definition}
+\subsection*{Examination Method}
+\subsection*{Expected Results}
 \section*{Evaluation and News Value}
+\subsection*{Evaluation}
+\subsection*{News Value}
+
 \section*{Pilot Study}
 Some study of the implementations of pseudo random number generators and
 cryptographically secure pseudo random number generators to get a better
@@ -157,60 +175,62 @@ protocols.
 
 
 \section*{Conditions and Schedule}
+The plan is to work more or less full time during the entire thesis project
+beginning 17 January until it is finished.
 \subsection*{Resources}
 There should not be a big demand on resources or equipment.
+Potentially output from a hardware source of entropy could be of interest
+as well, as it could be another source of entropy to analyse.
 \subsection*{Limitations}
 \subsection*{Collaboration with the principal}
 \subsection*{Schedule}
-The plan is to work more or less full time during the entire thesis project
-beginning 17 January until it is finished.
 \begin{description}
-    \item [Specification] \hfill\\
+    \item [Specification] \hfill
         \begin{description}
-            \item[Begin] 18-January 2017
+            \item[Begin] 17-January 2017
             \item[End] Week 5
             \item[Comment]\hfill \\
                 This specification will hopefully be done and approved by 
                 week 5.
         \end{description}
 
-    \item[Pilot Study] \hfill\\
+    \item[Pilot Study] \hfill
         \begin{description}
-            \item[Begin] 18-January 2017
+            \item[Begin] 17-January 2017
             \item[End] Week 9
             \item[Comment]\hfill \\
                 The work with the pilot study was initiated during the work on 
                 the specification and will continue when the specification is 
                 done for approximately 4 more weeks.
         \end{description}
-    \item[Implementation] \hfill\\
+    \item[Implementation] \hfill
         \begin{description}
             \item[Begin] Week 8
-            \item[Working Prototype] Week 11
-            \item[End] Week 14
+            \item[Working Prototype] Week 12
+            \item[End] Week 15
             \item[Comment]\hfill \\
                 A working prototype which is relatively close to the final 
-                implementation is planned to be finished by Week 11. After this
+                implementation is planned to be finished by Week 12. After this
                 testing and fine tuning of the prototype may be performed in 
                 order to get good data for the report which will be written 
                 in parallel.
         \end{description}
-    \item[Report] \hfill\\
+    \item[Report] \hfill
         \begin{description}
-            \item[Begin] Week 12
-            \item[Finished first draft] Week 15
-            \item[End] Week 19
+            \item[Begin] Week 13
+            \item[Finished first draft] Week 17
+            \item[End] Week 23
             \item[Comment]\hfill \\
                 There will be work on the report during the other parts of the
                 thesis, but during the indicated time the main focus will be 
                 on the report. A first draft of the report should be finished
                 early to give plenty of time for adjustments and comments.
         \end{description}
-    \item[Presentation] \hfill\\
+    \item[Presentation] \hfill
         \begin{description}
-            \item[Begin] Week 15
-            \item[Finished first draft] Week 17
-            \item[End] Week 20
+            \item[Begin] Week 16
+            \item[Finished first draft] Week 18
+            \item[End] Week 21
             \item[Comment] The work on the presentation should be done in
                 parallel with the fine tuning of the report after the first 
                 draft has been completed. A finished first draft of the 
