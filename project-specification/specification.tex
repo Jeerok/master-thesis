@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{report}
 \usepackage[swedish]{babel}
 \usepackage{fancyhdr}
+\usepackage{cite}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 
@@ -28,17 +29,18 @@ Omegapoint \\
 \end{minipage}
 \section*{Background and Objective}
 Several cryptographic protocols require some input to be unpredictable 
-in order to function in a way which provides security. Furthermore the 
-keys which are in the protocols must also be generated in an unpredictable
-manner in order for them to be secure. In order to get a source of 
-unpredictability, random generators are used. These generators can potentially 
+in order to provide security. Furthermore, any keys used in the protocols 
+must also be generated in an unpredictable manner since these are crucial for the 
+level of security, thus it must be hard for any adversary to guess or compute such 
+keys. In order to get a source of unpredictability, random generators are used.
+These generators can potentially 
 be truly random and generate numbers based on some phenomenon which is deemed 
 unpredictable. The speed of these generators is however often limited and because
-of this it is more common that the generators are pseudo random 
-based upon deterministic algorithms which given an input, 
-a seed for the generator, produces an arbitrarily long sequence which 
-looks random. Depending on the application different types of pseudo 
-random generators. For simulations and similar the most important properties 
+of this it is more common that the generators are pseudo random, i.e.
+based upon deterministic algorithms which given a seed for the generator,
+produces an arbitrarily long sequence which looks random.
+Depending on the application different types of pseudo random generators
+are needed. For simulations and similar the most important properties 
 is that it is fast to generate numbers and that they behave statistically
 in a way that seems random. For cryptographic purposes the generators 
 also have to be unpredictable in the meaning that an adversary who sees part
@@ -48,20 +50,24 @@ was truly random. \\
 
 \noindent
 These cryptographically secure pseudo random generators are thus such that 
-they expand a seed into a sequence which can't be efficiently distinguished 
+they expand a seed into a sequence which cannot be efficiently distinguished 
 from a truly random sequence without knowledge of the seed. If the seed is 
 known however, the whole sequence is easily reproducible as the algorithm 
-generating the sequence is deterministic. As such the that the pseudo random
+generating the sequence is deterministic. As such that the pseudo random
 generator is cryptographically secure will not provide any security if the seed
-is predictable. There is thus a need for a process to unpredictably select a 
-seed which can then be expanded into arbitrarily much seemingly random data
-using a cryptographically secure pseudo random generator. In order to select
+is predictable. Therefore it is of great importance for a process to select a 
+seed of unpredictable bits which can then be expanded into arbitrarily much 
+seemingly random data using a cryptographically secure pseudo random generator.
+In order to select
 this seed there is a requirement for a source of unpredictability. This can
 for example be an actual true random generator or another process on the 
 generating machine which behaves in an unpredictable manner. It is however not
 obvious how much data is needed from the source of unpredictability before 
 enough unpredictability has been gathered to the seed. A measure of this 
 unpredictability is the entropy of the sample received from the source.
+Entropy is a concept taken from thermodynamics which was first used in 
+information theory by Shannon with Shannon entropy
+\cite{Shannon:2001:MTC:584091.584093}.
 A sequence of bits from a source will have an entropy of $1$ per bit if
 it is completely random and an entropy of $0$ per bit if it is 
 completely predictable. It is easy to estimate the entropy of 
@@ -75,7 +81,7 @@ lot harder to estimate the entropy. \\
 
 \noindent
 Several test suites exists which try to determine when data does not behave 
-randomly. These suites can to some extent 
+randomly\cite{Ecuyer2007}\cite{Bassham:2010:SRS:2206233}. These suites can to some extent 
 identify sequences where the samples do not behave like identically distributed
 random variables. Most such tests do however only identify when there is 
 incorrect behaviour in the sequence and does not give an estimate of the actual
@@ -118,12 +124,14 @@ algorithm even in cases where part of the state becomes known to an attacker.
 
 \noindent
 There has also been guidelines produced by NIST related to random number
-generators and entropy sources. These documents NIST SP 800-90X where 
-X is A, B and C are guidelines related to how secure random generators 
-should perform and how sources of entropy sources should behave and how
-they can be tested. Furthermore researchers at NIST have also produced 
-the paper \textit{Predictive Models for Min-entropy Estimation} related to 
-using predictors to producing better estimates for entropy.
+generators and entropy sources. These documents NIST SP 800-90(A,B,C) 
+\cite{800-90A}\cite{800-90B}\cite{800-90C} are guidelines related to 
+how secure random generators should perform and how sources of entropy 
+sources should behave and how they can be tested.
+Furthermore researchers at NIST have also produced 
+the paper \textit{Predictive Models for Min-entropy Estimation}
+\cite{eprint-2015-26658}
+related to using predictors to producing better estimates for entropy.
 Other sources related to how entropy and randomness testing is performed is
 also of interest, including for example how suites such as TestU01 evaluates
 data.
@@ -149,4 +157,6 @@ protocols.
 
 
 \section*{Conditions and Schedule}
+\bibliography{references}{}
+\bibliographystyle{plain}
 \end{document}
