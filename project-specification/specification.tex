@@ -28,7 +28,7 @@ Omegapoint \\
  Hannes Salin\\
 \end{minipage}
 \section*{Background and Objective}
-Several cryptographic protocols require some input to be unpredictable 
+Several cryptographic protocols require some unpredictable input
 in order to provide security. Furthermore, any keys used in the protocols 
 must also be generated in an unpredictable manner since these are crucial for 
 the level of security, thus it must be hard for any adversary to guess or 
@@ -36,40 +36,39 @@ compute such keys. In order to get a source of unpredictability,
 random generators are used.  These generators can potentially 
 be truly random and generate numbers based on some phenomenon which is deemed 
 unpredictable. The speed of these generators is however often limited and because
-of this it is more common that the generators are pseudo random, i.e.
-based upon deterministic algorithms which given a seed for the generator,
-produces an arbitrarily long sequence which looks random.
-Depending on the application different types of pseudo random generators
-are needed. For simulations and similar the most important properties 
+of this it is more common that generators used are pseudo random, i.e.
+based upon deterministic algorithms, which when given a seed for the generator,
+produces an arbitrarily long sequence which appears random.
+Depending on the application, different types of pseudo random generators
+are needed. For simulations and similar, the most important properties 
 is that it is fast to generate numbers and that they behave statistically
 in a way that seems random. For cryptographic purposes the generators 
-also have to be unpredictable in the meaning that an adversary who sees part
+also have to be unpredictable, meaning that an adversary who sees part
 of the generated sequence won't be able to efficiently guess the next bit 
 of the sequence with a probability significantly higher than if the sequence 
 was truly random. \\
 
 \noindent
-These cryptographically secure pseudo random generators are thus such that 
-they expand a seed into a sequence which cannot be efficiently distinguished 
+These cryptographically secure pseudo random generators will thus 
+expand a seed into a sequence which cannot be efficiently distinguished 
 from a truly random sequence without knowledge of the seed. If the seed is 
 known however, the whole sequence is easily reproducible as the algorithm 
 generating the sequence is deterministic. As such that the pseudo random
-generator is cryptographically secure will not provide any security if the seed
-is predictable. Therefore it is of great importance for a process to select a 
-seed of unpredictable bits which can then be expanded into arbitrarily much 
-seemingly random data using a cryptographically secure pseudo random generator.
-In order to select
+generator is cryptographically secure will not provide any unpredictability if 
+the seed is predictable. Therefore it is of great importance for a process to 
+select a seed of unpredictable bits which can then be expanded into arbitrarily
+much seemingly random data using a cryptographically secure pseudo random 
+generator. In order to select
 this seed there is a requirement for a source of unpredictability. This can
 for example be an actual true random generator or another process on the 
 generating machine which behaves in an unpredictable manner. It is however not
-obvious how much data is needed from the source of unpredictability before 
-enough unpredictability has been gathered to the seed. A measure of this 
-unpredictability is the entropy of the sample received from the source.
-Entropy is a concept taken from thermodynamics which was first used in 
-information theory by Shannon with Shannon entropy
-\cite{Shannon:2001:MTC:584091.584093}.
+obvious how much data is needed before enough unpredictability has been 
+gathered to the seed. A measure of this unpredictability is the entropy of 
+the sample received from the source.  Entropy is a concept taken from 
+thermodynamics which was first used in information theory by Shannon 
+with Shannon entropy \cite{Shannon:2001:MTC:584091.584093}.
 A sequence of bits from a source will have an entropy of $1$ per bit if
-it is completely random and an entropy of $0$ per bit if it is 
+it is completely unpredictable and an entropy of $0$ per bit if it is 
 completely predictable. It is easy to estimate the entropy of 
 data if the data consists of samples with $n$ bits where each such sample is
 generated completely independent from any of the other samples. If this is the 
@@ -81,8 +80,8 @@ is a lot harder to estimate the entropy. \\
 
 \noindent
 Several test suites exists which try to determine when data does not behave 
-randomly\cite{Ecuyer2007}\cite{Bassham:2010:SRS:2206233}
-\cite{brown2017dieharder}. These suites can to some extent 
+randomly\cite{Bassham:2010:SRS:2206233}
+\cite{brown2017dieharder}\cite{Ecuyer2007}. These suites can to some extent 
 identify sequences where the samples do not behave like identically distributed
 random variables. Most such tests do however only identify when there is 
 incorrect behaviour in the sequence and does not give an estimate of the actual
@@ -90,8 +89,9 @@ unpredictability of the sequence. As the sequence can somehow be distinguished
 from truly random data, it could be a potential weakness if used in 
 cryptographic applications by itself. The sequence does however probably still
 contain some amount of unpredictability and this could potentially be extracted
-by transforming the sequence so that it statistically behaves more like random
-data. This can be done with multiple sources of entropy which can be combined 
+by transforming the sequence so that it statistically behaves more like 
+uniformly distributed random data. 
+This can be done with multiple sources of entropy which can be combined 
 in order to create a source of random data which behaves randomly and is 
 unpredictable. This source could then be used to get a seed for a
 cryptographically secure random generator which could expand this source of 
@@ -99,7 +99,7 @@ unpredictable into as much random data as necessary.\\
 
 \noindent
 An estimate of the entropy of data is thus useful in order to determine
-how much data is necessary to get enough unpredictability for your random
+how much data is necessary to get enough unpredictability for random
 generators. A recent approach to estimating the entropy of data is to use 
 predictors\cite{eprint-2015-26658}.
 These estimators take the approach of trying to predict the data
@@ -110,8 +110,8 @@ entropy. All entropy estimations will however have the problem that they only
 estimate the entropy of some specific types of distributions of data while 
 other distributions will get wrong estimations. The constructed predictors were 
 meant to be general and work in general but more specific estimators will work
-better for most types of entropy sources. As such there is the possibility of
-a lot more entropy sources which better models more types of data sources. \\
+better for some types of entropy sources. As such there is the possibility of
+more estimators which better models more types of data sources. \\
 
 \noindent
 A specific application where there is a need for an entropy estimator is for
@@ -121,10 +121,10 @@ and added to an estimate of the entropy in the pool\cite{/dev/random}.
 The random number generator then only returns a number when it deems there 
 to be enough entropy in the pool.
 Other random number generators which depend on outside entropy 
-have similar systems which they have in order to avoid giving numbers to 
+have similar systems in order to avoid giving numbers to 
 the users of the generators when the numbers are deemed too predictable.
-The estimates of the available entropy is interesting to analyse as a 
-too high estimate of the entropy could be a security risk. There have been 
+The estimates of the available entropy is of interest as a too high estimate of
+the entropy could be a potential security vulnerability. There have already been 
 several examples of security vulnerabilities which were the result of a lack
 of entropy when generating random numbers\cite{goldberg1996randomness}
 \cite{yilek2009private}.
@@ -138,8 +138,8 @@ they get their entropy and how they estimate the amount they have. Compare the
 way these estimates are performed with existing general tests which are meant 
 to estimate entropy of general data. Then produce estimators which try to give
 better entropy estimates given the data source.
-Further comparison of these produced estimators on data which is produced
-to follow specific distributions will also be performed in order to get 
+Further tests with these estimators will also be performed on data which 
+is produced to follow specific distributions in order to get 
 values to compare the results to.
 \subsection*{Examination Method}
 Existing algorithms for entropy estimation to be tested includes the ones
@@ -151,19 +151,19 @@ estimate the entropy in the way done by predictors as well as potentially
 other type of estimators. \\
 
 \noindent
-Preliminary the data to be tested is output from different entropy sources,
+Preliminary the data to be tested is the output of different entropy sources,
 before they are mixed in an irreversible way with other data. Furthermore
 tests will be performed on data which have been generated to have a specific
 distribution and thus have a known entropy, given that the random number 
 generator used for the data is a good one. Potentially some study could be
-performed on estimating the entropy of random number generators, although only
-on weak such, which are not meant to be cryptographically secure.
+performed on estimating the entropy of output from random number generators, 
+although only on weak such, which are not meant to be cryptographically secure.
 \subsection*{Expected Scientific Results}
 The hypothesis is that new entropy estimators may complement existing 
 estimators by providing better estimates for at least some type of data.
-This is being tested by producing random data which have a known entropy
-with varying distributions and running the estimators against this data. 
-The results will hopefully be useful for better estimations of entropy for 
+This is being tested by producing random data which have a known entropy,
+with varying distributions, which the estimators can try to give good estimates
+for. The results will hopefully be useful for better estimations of entropy for
 some entropy sources which given better entropy estimations can be either safer
 to use or alternatively more efficient while providing the same level of 
 security.
@@ -184,7 +184,7 @@ good matches for this type of data.
 New estimators could be useful for producer of new entropy sources in order to
 give better estimates of the produced entropy. Existing entropy sources could
 also potentially benefit from new entropy estimators to give a better estimate
-and thus potentially eliminate weaknesses existing or give a more efficient 
+and thus potentially eliminate existing weaknesses or give a more efficient 
 stream of random data.
 
 \section*{Pilot Study}
@@ -207,7 +207,7 @@ the paper \textit{Predictive Models for Min-entropy Estimation}
 \cite{eprint-2015-26658}
 related to using predictors to producing better estimates for entropy.
 Other sources related to how entropy and randomness testing is performed is
-also of interest, including for example how suites such as TestU01 evaluates
+also of interest, including for example how suites such as TestU01\cite{Ecuyer2007} evaluates
 data.
 \\
 
@@ -215,13 +215,13 @@ data.
 Furthermore it will need to be investigated what sources of entropy exist today
 and how they work. This includes built in entropy generators in operating 
 systems but also specific generators built for that specific purpose. Sites
-such as \textit{random.org}\cite{haahr2010random} which provide a service which 
-provide random data as a service will also be of interest.
+such as \textit{random.org}\cite{haahr2010random} which is a service that 
+provide random data will also be of interest.
 \\
 
 \noindent
 It may also be useful to study the different cryptographic protocols 
-where randomness is useful in order to see what kind of impact too low entropy 
+where randomness is useful, in order to see what kind of impact too low entropy 
 may have in relation to security. In combination with this it will also be 
 of interest to investigate the weaknesses which have been discovered that were 
 the result of lacking entropy when generating random numbers for cryptographic 
@@ -232,8 +232,8 @@ The plan is to work more or less full time during the entire thesis project
 beginning 17 January until it is finished.
 \subsection*{Resources}
 There should not be a big demand on resources or equipment.
-Potentially output from a hardware source of entropy could be of interest
-as well, as it could be another source of entropy to analyse.
+Potentially output from a hardware source of entropy could be of interest,
+as it could be another source of entropy to analyse.
 \subsection*{Limitations}
 The project will deal mainly with entropy estimation. There will thus not be a
 lot of focus on what is done with the entropy or how to produce entropy. How 
