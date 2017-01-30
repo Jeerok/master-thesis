@@ -66,3 +66,14 @@ Recommendation for the Entropy
 Sources Used for Random Bit Generation
 (http://csrc.nist.gov/publications/drafts/800-90/draft-sp800-90b.pdf)
 Den källa som Predictive Models for Min-entropy Estimation jämför sig mot
+
+Advances in Cryptology - Crypto 2012, pages 626-642
+(http://download.springer.com.focus.lib.kth.se/static/pdf/754/bok%253A978-3-642-32009-5.pdf?originUrl=http%3A%2F%2Flink.springer.com%2Fbook%2F10.1007%2F978-3-642-32009-5&token2=exp=1485767790~acl=%2Fstatic%2Fpdf%2F754%2Fbok%25253A978-3-642-32009-5.pdf%3ForiginUrl%3Dhttp%253A%252F%252Flink.springer.com%252Fbook%252F10.1007%252F978-3-642-32009-5*~hmac=70f7be9b3eab62b52986d27374f884e60dacb1d01c3d2914b0c2b5c6bbd20559)
+Analys av publika nycklar som hittat kollisioner på grund av att 
+genereringen av nycklarna haft bristande entropi.
+
+New research: There's no need to panic over factorable keys-just mind your Ps and Qs
+(https://freedom-to-tinker.com/2012/02/15/new-research-theres-no-need-panic-over-factorable-keys-just-mind-your-ps-and-qs/)
+Mer analys angående publika SSL nycklar som bedömer att 4.1% av alla SSL 
+nycklarna i deras dataset var genererade med dålig entropi. Visar att det
+är ett existerande problem med entropiuppskattning vid slumptalsgenerering.  
