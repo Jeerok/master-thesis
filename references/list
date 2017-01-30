@@ -24,11 +24,18 @@ Randomness Recomendations for Security (RFC1750)
 RFC som tar upp kraven på säkerhet på internet relaterat till slumptal 
 och hur för lite entropi i slumptalsalgoritmen kan göra det osäkert.
 
+Randomness Recomendations for Security (RFC4086)
+(http://www.ietf.org/rfc/rfc4086.txt)
+RFC som tar upp kraven på säkerhet på internet relaterat till slumptal 
+och hur för lite entropi i slumptalsalgoritmen kan göra det osäkert.
+Uppdaterad version relaterat till mer utbrett internet och 
+säkerhetsprotokoll i förhållande till RFC1750 som släpptes 1994.
+
 How to predict Congruential Algorithms
 (PDF)
 Möjligtvis av intresse för att kunna känna igen dåliga slumptalsgeneratorer.
 
-... /dev/random is not robust
+Security Analysis of Pseudo-Random Number Generators with Input: /dev/random is not Robust
 (http://eprint.iacr.org/2013/338.pdf)
 Pratar om sårbarheter i /dev/random på linux baserade maskiner
 relaterat till att det är dåliga uppskattningar av entropi 
@@ -64,3 +71,15 @@ att tömma entropi poolen till /dev/random. Enligt
 "The Linux Pseudorandom Number Generator Revisited" så har sedan dess problemen
 försökt åtgärdas.
 
+A Model and Architecture for Pseudo-Random-generation and Applications to /dev/random
+(http://delivery.acm.org.focus.lib.kth.se/10.1145/1110000/1102148/p203-barak.pdf?ip=130.237.29.138&id=1102148&acc=ACTIVE%20SERVICE&key=74F7687761D7AE37%2EE53E9A92DC589BF3%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&CFID=892276962&CFTOKEN=40652580&__acm__=1485786918_994648f1b02f4eba1d67bc62c95182d2)
+Papper som presentererar en model för hur slumpdata ska genereras 
+på ett mer robust sätt som har bättre bevisad säkerhet än nuvarande
+implementation av t.ex. /dev/random relaterat till hur entropi samlas
+in.
+
+Fast kernel entropy estimation and optimization
+(http://cgm.technion.ac.il/Computer-Graphics-Multimedia/Publications/Papers/2005/2005_Fast_kernel_entropy_estimation_and_optimization.pdf)
+Entropi uppskattning som görs på effektivt sätt så att det skulle kunna 
+implementeras i operativssystem kärna. Görs via differentiel entropi 
+gradient.
