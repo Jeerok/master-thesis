@@ -17,14 +17,6 @@ Information om TestU01 som kan användas som referens till nuvarande testning av
 
 Predictive Models for Min-entropy Estimation
 (http://download.springer.com.focus.lib.kth.se/static/pdf/926/chp%253A10.1007%252F978-3-662-48324-4_19.pdf?originUrl=http%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%2F978-3-662-48324-4_19&token2=exp=1484910303~acl=%2Fstatic%2Fpdf%2F926%2Fchp%25253A10.1007%25252F978-3-662-48324-4_19.pdf%3ForiginUrl%3Dhttp%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%252F978-3-662-48324-4_19*~hmac=c8724945d9436ac13a3e11ccaa2c1d00fb9640d81fa630747b5cb6abd264d80d)
-@article{eprint-2015-26658,
-  title={Predictive Models for Min-Entropy Estimation},
-  journal={IACR Cryptology ePrint Archive},
-  volume={2015},
-  pages={600},
-  author={John Kelsey and Kerry A. McKay and Meltem Sönmez Turan},
-  year=2015
-}
 Papper som beskriver användingen av prediktorer för att ge uppskattning av entropin.   
 
 Randomness Recomendations for Security (RFC1750)
@@ -34,26 +26,6 @@ och hur för lite entropi i slumptalsalgoritmen kan göra det osäkert.
 
 How to predict Congruential Algorithms
 (PDF)
-@Article{Krawczyk:1992:HPC,
-  author =       "Hugo Krawczyk",
-  title =        "How to predict congruential generators",
-  journal =      j-J-ALG,
-  volume =       "13",
-  number =       "4",
-  pages =        "527--545",
-  month =        dec,
-  year =         "1992",
-  CODEN =        "JOALDV",
-  DOI =          "http://dx.doi.org/10.1016/0196-6774(92)90054-G",
-  ISSN =         "0196-6774 (print), 1090-2678 (electronic)",
-  ISSN-L =       "0196-6774",
-  bibdate =      "Tue Dec 11 09:15:19 MST 2012",
-  bibsource =    "http://www.math.utah.edu/pub/tex/bib/jalg.bib",
-  URL =          "http://www.sciencedirect.com/science/article/pii/019667749290054G",
-  acknowledgement = ack-nhfb,
-  fjournal =     "Journal of Algorithms",
-  journal-URL =  "http://www.sciencedirect.com/science/journal/01966774",
-}
 Möjligtvis av intresse för att kunna känna igen dåliga slumptalsgeneratorer.
 
 ... /dev/random is not robust
@@ -77,3 +49,18 @@ New research: There's no need to panic over factorable keys-just mind your Ps an
 Mer analys angående publika SSL nycklar som bedömer att 4.1% av alla SSL 
 nycklarna i deras dataset var genererade med dålig entropi. Visar att det
 är ett existerande problem med entropiuppskattning vid slumptalsgenerering.  
+
+The Linux Pseudorandom Number Generator Revisited
+(https://hal.archives-ouvertes.fr/hal-01005441/)
+Pratar om /dev/random samt /dev/urandom och deras implementation och en analys 
+av den. Relaterat till pappret "Analysis of the Linux Random Number Generator" 
+som gjorde linknande analys på tidigare version av generatorn.
+
+Analysis of the Linux Random Number Generator
+(https://eprint.iacr.org/2006/086.pdf)
+Analys av linux slumptalsgeneratorer där vissa svagheter och identifieras.
+Dessa är dels en attack på forward secrecy och en denial of service baserat på
+att tömma entropi poolen till /dev/random. Enligt 
+"The Linux Pseudorandom Number Generator Revisited" så har sedan dess problemen
+försökt åtgärdas.
+
